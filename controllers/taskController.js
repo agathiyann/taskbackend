@@ -1,6 +1,5 @@
 const Task = require('../models/Task');
 
-// Get all tasks
 exports.getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -10,9 +9,8 @@ exports.getAllTasks = async (req, res) => {
   }
 };
 
-// Create a new task
 exports.createTask = async (req, res) => {
-  console.log("Received Task Data:", req.body);  // Log the request body
+  console.log("Received Task Data:", req.body);  
   const task = new Task({
     title: req.body.title,
     description: req.body.description,
@@ -22,14 +20,13 @@ exports.createTask = async (req, res) => {
     const newTask = await task.save();
     res.status(201).json(newTask);
   } catch (error) {
-    console.error("Error Saving Task:", error);  // Log any error
+    console.error("Error Saving Task:", error);  
     res.status(400).json({ message: error.message });
   }
 };
 
 
 
-// Get a single task by ID
 exports.getTaskById = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -40,7 +37,6 @@ exports.getTaskById = async (req, res) => {
   }
 };
 
-// Update a task
 exports.updateTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);

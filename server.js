@@ -5,11 +5,11 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Atlas connection
+
 const uri = "mongodb+srv://agathiyan:sikkiesu@taskmanager.epeu1mf.mongodb.net/taskmanager?retryWrites=true&w=majority&appName=taskmanager";
 
 mongoose.connect(uri, {
@@ -20,7 +20,7 @@ mongoose.connect(uri, {
 .then(() => console.log('MongoDB connected to Atlas'))
 .catch(err => console.error('MongoDB connection error:', err));
 
-// Example Mongoose schema and model
+
 const taskSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: String,
@@ -29,7 +29,7 @@ const taskSchema = new mongoose.Schema({
 
 const Task = mongoose.model('Task', taskSchema);
 
-// Routes
+
 app.get('/tasks', async (req, res) => {
     try {
         const tasks = await Task.find();
