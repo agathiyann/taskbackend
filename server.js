@@ -13,9 +13,7 @@ app.use(express.json());
 const uri = "mongodb+srv://agathiyan:sikkiesu@taskmanager.epeu1mf.mongodb.net/taskmanager?retryWrites=true&w=majority&appName=taskmanager";
 
 mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
+    serverSelectionTimeoutMS: 30000, 
 })
 .then(() => console.log('MongoDB connected to Atlas'))
 .catch(err => console.error('MongoDB connection error:', err));
